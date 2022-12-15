@@ -51,10 +51,10 @@ class Statistics(db.Model):
     temporary = db.Column(db.Integer, unique=False, nullable=True)
 
     def __repr__(self):
-        return f'Statistics\("{self.name}","{self.abbrev}"\)'
+        return f'Statistics\("{self.name}","{self.abbrev}")'
 
     def __str__(self):
-        return f("This stat is: {self.name}, it is abbreviated as: {self.abbrev}.")
+        return f"This stat is: {self.name}, it is abbreviated as: {self.abbrev}."
 
     def stat_gain(self):
         '''
@@ -80,7 +80,7 @@ class StatisticsRangeBonus(db.Model):
     adjective = db.Column(db.String(80), unique=False, nullable=True)
 
     def display_bonus(self, stat):
-        result = 'stat_bonus'.query.filter(stat>=min_range & stat<=max_range).first()
+        result = 'stat_bonus'.query.filter(stat>=self.min_range & stat<=self.max_range).first()
         return result
     
 
@@ -100,7 +100,7 @@ class StatisticsGains(db.Model):
     die_mod = db.Column(db.Integer, unique=False, nullable=True)
 
     def display_bonus(self, stat):
-        result = 'stat_bonus'.query.filter(stat>=min_range & stat<=max_range).first()
+        result = 'stat_bonus'.query.filter(stat>=self.min_range & stat<=self.max_range).first()
         return result
     
 
